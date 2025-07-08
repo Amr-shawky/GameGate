@@ -1,0 +1,101 @@
+/* type, pause, erase, pause, next word… */
+@keyframes typewriter {
+  /* —— LARRY DANIELS —— */
+  0%  { content: "|"; }
+  1%  { content: "L|"; }
+  2%  { content: "La|"; }
+  3%  { content: "Lar|"; }
+  4%  { content: "Larr|"; }
+  5%  { content: "Larry|"; }
+  6%  { content: "Larry |"; }
+  7%  { content: "Larry D|"; }
+  8%  { content: "Larry Da|"; }
+  9%  { content: "Larry Dan|"; }
+  10%  { content: "Larry Dani|"; }
+  11%  { content: "Larry Danie|"; }
+  12%  { content: "Larry Daniel|"; }
+  13%  { content: "Larry Daniels|"; }
+  14%  { content: "Larry Daniels|"; }
+  15%  { content: "Larry Daniels|"; }
+  16%  { content: "Larry Daniels|"; }
+  17%  { content: "Larry Daniels|"; }
+
+  /* erase */
+  18%  { content: "Larry Daniel|"; }
+  19%  { content: "Larry Danie|"; }
+  20%  { content: "Larry Dani|"; }
+  21%  { content: "Larry Dan|"; }
+  22%  { content: "Larry D|"; }
+  23%  { content: "Larry |"; }
+  24%  { content: "Larry|"; }
+  25%  { content: "Larr|"; }
+  26%  { content: "Lar|"; }
+  27%  { content: "La|"; }
+  28%  { content: "L|"; }
+  29%  { content: "|"; }
+  30%  { content: "|"; }
+  31%  { content: "|"; }
+  32%  { content: "|"; }
+
+  /* —— DEVELOPER —— */
+  33%  { content: "D|"; }
+  35%  { content: "De|"; }
+  37%  { content: "Dev|"; }
+  38%  { content: "Deve|"; }
+  40%  { content: "Devel|"; }
+  42%  { content: "Develo|"; }
+  44%  { content: "Develop|"; }
+  46%  { content: "Develope|"; }
+  48%  { content: "Developer|"; }
+  50%  { content: "Developer|"; }
+  52%  { content: "Developer|"; }
+
+
+  /* erase */
+  54%  { content: "Develope|"; }
+  56%  { content: "Develop|"; }
+  58%  { content: "Develo|"; }
+  60%  { content: "Devel|"; }
+  62%  { content: "Deve|"; }
+  64%  { content: "Dev|"; }
+  65%  { content: "De|"; }
+  66%  { content: "D|"; }
+  67%  { content: "|"; }
+  68%  { content: "|"; }
+  69%  { content: "|"; }
+
+  /* —— DESIGNER —— */
+  70%  { content: "D|"; }
+  72%  { content: "De|"; }
+  74%  { content: "Des|"; }
+  76%  { content: "Desi|"; }
+  78%  { content: "Desig|"; }
+  80%  { content: "Designe|"; }
+  82%  { content: "Designer|"; }
+  84%  { content: "Designer|"; }
+  86%  { content: "Designer|"; }
+
+    /* erase */
+  88%  { content: "Designe|"; }
+  90%  { content: "Design|"; }
+  92%  { content: "Desig|"; }
+  94%  { content: "Desi|"; }
+  95%  { content: "Des|"; }
+  96%  { content: "De|"; }
+  97%  { content: "D|"; }
+  98%  { content: "|"; }
+  100%  { content: "|"; }
+
+}
+
+
+/* for the icon  */
+
+@keyframes icon-animation{
+  0%{
+    transform: translateY(-15px);
+  } 
+  100%{
+    transform: translateY(15px);
+  }
+}

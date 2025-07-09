@@ -37,6 +37,34 @@
 
 * {
     font-family: sans-serif;
+    --navbar-bg: #3A497B;
     --bs-navbar-active-color: RGB(17, 17, 17);
     --bs-navbar-active-color-hover: RGB(17, 17, 17);
+    --bs-nav-link-color: white;
+    --bs-nav-link-hover-color : #0099CC;
+    --bs-navbar-active-color : #0099CC;
 }
+
+body {
+    background-color: #272B30;
+}
+
+.mt-160 {
+    margin-top: 160px;
+}
+.bg-nav{
+    background-color: var(--navbar-bg);
+}
+.pt-160{
+    padding-top: 160px;
+}
+
+header img {
+    max-height: 30vh;
+    object-fit: cover;
+}
+
+.box-shadow-dark {
+        box-shadow: 0 0 10px rgb(0 0 0 / 0.7);
+}
+

@@ -78,3 +78,17 @@ header img {
         box-shadow: 0 0 10px rgb(0 0 0 / 0.7);
 }
 
+.text-bg-primary {
+    color: #fff !important;
+    background-color: RGBA(13, 110, 253, var(--bs-bg-opacity, 1)) !important;
+}
+
+.home .card {
+    filter: grayscale(0.7);
+    transition: transform 0.5s, filter 0.5s 0.1s;
+}
+
+.home .card:hover {
+    transform: scale(1.05);
+    filter: grayscale(0);
+}

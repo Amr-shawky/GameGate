@@ -34,15 +34,25 @@
     font-family: "montserrat-light";
     src: url(../fonts/Montserrat-Light.ttf);
 }
+@font-face {
+    font-family: "NerkoOne-Regular";
+    src: url(../fonts/NerkoOne-Regular.ttf);
+}
+@font-face {
+    font-family: "Comfortaa-VariableFont_wght";
+    src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
+}
 
 * {
-    font-family: sans-serif;
+    --font-primary: "nerkoOne-Regular";
+    --font-secondary: "Comfortaa-VariableFont_wght";
     --navbar-bg: #3A497B;
     --bs-navbar-active-color: RGB(17, 17, 17);
     --bs-navbar-active-color-hover: RGB(17, 17, 17);
     --bs-nav-link-color: white;
     --bs-nav-link-hover-color : #0099CC;
     --bs-navbar-active-color : #0099CC;
+    font-family: var(--font-primary);
 }
 
 body {

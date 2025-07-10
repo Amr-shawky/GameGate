@@ -55,7 +55,7 @@ export class UIGameDetails {
       game_url
     } = this.game;
     this.selector.innerHTML = `
-                   <div class="game">
+                   <div class="game row">
                 <h3 class="text-white pb-3">Details Game</h3>
                 <i
                   class="fas fa-xmark position-absolute fs-2 top-0 end-0 m-5 text-white"
@@ -65,14 +65,14 @@ export class UIGameDetails {
                   onclick="close()"
                 ></i>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-12 col-md-4">
                     <img
                       src="${thumbnail}"
                       class="w-100"
                       alt="${title} Thumbnail"
                     />
                   </div>
-                  <div class="col-8">
+                  <div class="col-12 col-md-8">
                     <div class="gametype">
                       <h2 class="text-white">
                           <span>Title:</span> ${title}</h2>

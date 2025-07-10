@@ -106,3 +106,7 @@ header img {
     opacity: 1;
     filter: none;
 }
+
+.nav-link{
+    cursor: pointer;
+}

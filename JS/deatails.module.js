@@ -4,6 +4,8 @@ export class detailedgamecls {
     this.id = id;
   }
   async createGameDetailsCard(selector) {
+    const loader = document.querySelector(".loading");
+    loader.classList.remove("d-none");
     if (!selector) return;
     const gamejsoninfo = await this.fetchGame();
     if (!gamejsoninfo) return;
@@ -13,6 +15,7 @@ export class detailedgamecls {
     if (closeicon) {
       closeicon.addEventListener("click", this.closeDetails.bind(this));
     }
+    loader.classList.add("d-none");
   }
   async fetchGame() {
     const url = `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${this.id}`;

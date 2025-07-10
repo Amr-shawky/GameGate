@@ -6,14 +6,17 @@ export class displaygames{
     constructor(type) {
         this.type = type;
     }
-    createGameCard(selector) {
-        if (!selector) return;
-        this.fetchGames(this.type);
-        const uiGames = new UIGames(this.games, selector);
-        uiGames.createGameCard();
-        addCardEventListeners();
+    async createGameCard(selector) {
+
+      if (!selector) return;
+      await this.fetchGames();
+      const uiGames = new UIGames(this.games, selector);
+      uiGames.createGameCard();
+      addCardEventListeners();
     }
     async fetchGames() {
+      const loader = document.querySelector(".loading");
+      loader.classList.remove("d-none");
   const url =
     `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${this.type}`;
   const options = {
@@ -29,6 +32,7 @@ export class displaygames{
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+    this.games = result;
 
     if (rowContainer) {
       const uiGames = new UIGames(result , rowContainer);
@@ -40,6 +44,8 @@ export class displaygames{
   } catch (error) {
     console.error(error);
   }
+      loader.classList.add("d-none");
+
 }
 
 }

@@ -72,87 +72,69 @@ screenshots:
 */
 
 export class UIGameDetails {
-    constructor(game) {
-        this.game = game;
-    }
-    createGameDetailsCard() {
-        const {
-            id,
-            title,
-            thumbnail,
-            description,
-            genre,
-            platform,
-            publisher,
-            developer,
-            release_date,
-            status,
-            game_url,
-            freetogame_profile_url,
-            minimum_system_requirements,
-            screenshots,
-        } = this.game;
-
-        // System requirements HTML
-        let sysReqHtml = '';
-        if (minimum_system_requirements) {
-            sysReqHtml = `
-                <ul class="list-unstyled text-white small mb-2">
-                    ${minimum_system_requirements.os ? `<li><strong>OS:</strong> ${minimum_system_requirements.os}</li>` : ''}
-                    ${minimum_system_requirements.processor ? `<li><strong>Processor:</strong> ${minimum_system_requirements.processor}</li>` : ''}
-                    ${minimum_system_requirements.memory ? `<li><strong>Memory:</strong> ${minimum_system_requirements.memory}</li>` : ''}
-                    ${minimum_system_requirements.graphics ? `<li><strong>Graphics:</strong> ${minimum_system_requirements.graphics}</li>` : ''}
-                    ${minimum_system_requirements.storage ? `<li><strong>Storage:</strong> ${minimum_system_requirements.storage}</li>` : ''}
-                </ul>
-            `;
-        }
-
-        // Screenshots HTML
-        let screenshotsHtml = '';
-        if (Array.isArray(screenshots) && screenshots.length > 0) {
-            screenshotsHtml = `
-                <div class="mb-3">
-                    <div class="row g-2">
-                        ${screenshots
-                            .map(
-                                (shot) => `
-                                    <div class="col-6 col-md-3">
-                                        <img src="${shot.image}" alt="Screenshot" class="img-fluid rounded" />
-                                    </div>
-                                `
-                            )
-                            .join('')}
+  constructor(game) {
+    this.game = game;
+  }
+  createGameDetailsCard() {
+    const {
+      title,
+      thumbnail,
+      description,
+      genre,
+      platform,
+      status,
+      game_url
+    } = this.game;
+    return `
+        
+                   <div class="game">
+                <h3 class="text-white pb-3">Details Game</h3>
+                <i
+                  class="fas fa-xmark position-absolute fs-2 top-0 end-0 m-5 text-white"
+                  aria-label="Close"
+                  role="button"
+                  tabindex="0"
+                  onclick="close()"
+                ></i>
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      src="${thumbnail}"
+                      class="w-100"
+                      alt="${title} Thumbnail"
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="gametype">
+                      <h2 class="text-white">
+                          <span>Title:</span> ${title}</h2>
+                      <p class="text-white pt-0">
+                        <span class="fw-bold">Category:</span> <span class="bg-primary2 px-2 rounded-2 text-black">${genre}</span>
+                      </p>
+                      <p class="text-white">
+                        <span class="fw-bold">Platform:</span> <span class="bg-primary2 px-2 rounded-2 text-black">${platform}</span>
+                      </p>
+                      <p class="text-white">
+                        <span class="fw-bold">Status:</span> <span class="bg-primary2 px-2 rounded-2 text-black">${status}</span>
+                      </p>
                     </div>
-                </div>
-            `;
-        }
-
-        return `
-            <div class="card h-100 bg-transparent" data-id="${id}">
-                <img src="${thumbnail}" class="card-img-top object-fit-cover h-100" alt="${title} Thumbnail">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h3 class="h6 small text-white mb-0">${title}</h3>
-                        <span class="badge text-bg-success">${status || 'Unknown'}</span>
+                    <div class="gamedescription">
+                      <p class="text-white">
+                          ${description}
+                      </p>
                     </div>
-                    <p class="card-text small text-center opacity-50 text-white">${description}</p>
-                    <div class="mb-2">
-                        <span class="badge badge-color">${genre}</span>
-                        <span class="badge badge-color">${platform}</span>
-                    </div>
-                    <ul class="list-unstyled text-white small mb-2">
-                        ${publisher ? `<li><strong>Publisher:</strong> ${publisher}</li>` : ''}
-                        ${developer ? `<li><strong>Developer:</strong> ${developer}</li>` : ''}
-                        ${release_date ? `<li><strong>Release Date:</strong> ${release_date}</li>` : ''}
-                    </ul>
-                    ${sysReqHtml}
-                    ${screenshotsHtml}
-                    <div class="d-flex gap-2 mt-2">
-                        ${game_url ? `<a href="${game_url}" target="_blank" class="btn btn-primary btn-sm">Play Now</a>` : ''}
-                        ${freetogame_profile_url ? `<a href="${freetogame_profile_url}" target="_blank" class="btn btn-outline-light btn-sm">Profile</a>` : ''}
-                    </div>
+                    <button class="btn btn-warning bg-transparent">
+                      <a
+                        href="${game_url}"
+                        target="_blank"
+                        class="text-decoration-none text-white"
+                      >
+                        Show Game
+                      </a>
+                    </button>
+                  </div>
                 </div>
             </div>
         `;
-    }
+  }
 }

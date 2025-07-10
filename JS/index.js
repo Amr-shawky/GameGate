@@ -34,14 +34,18 @@ function addCardEventListeners() {
       /*
        */
       console.log(gamejsoninfo);
-
-      // Disable scrolling on the body
-      document.body.style.overflow = "hidden";
+    // Disable scrolling on the body
+    // and make the scroll on the game details div only 
+    document.body.style.overflow = "hidden";
+    const gameDetailedInfo = document.querySelector(".game-detailed-info");
+    if (gameDetailedInfo) {
+        gameDetailedInfo.style.overflowY = "auto";
+        gameDetailedInfo.style.maxHeight = "100vh";
+    }
       const currentgame = document.querySelector(".current-game");
       currentgame.style.display = "block";
       // remove d-none
       currentgame.classList.remove("d-none");
-      const gameDetailedInfo = document.querySelector(".game-detailed-info");
 
       // هنا ممكن تضيف منطق لعرض تفاصيل اللعبة
       const uiGameDetails = new UIGameDetails(gamejsoninfo);
@@ -90,15 +94,24 @@ async function fetchGames(type) {
 }
 
 
+const navLinks = document.querySelectorAll(".nav-link");
 
-const navlink = document.querySelectorAll(".nav-link");
-// When click on any nav, call fetchGames with the nav link's text content as the parameter
-if (navlink) {
-  navlink.forEach(link => {
+if (navLinks) {
+  navLinks.forEach(link => {
     link.addEventListener("click", (event) => {
-      event.preventDefault();
-      console.log(event);
-      fetchGames(link.textContent.trim().toLowerCase());
+      event.preventDefault(); // من غير ما الصفحة تعمل reload
+
+      // 1. Remove 'active' from all links
+      navLinks.forEach(l => l.classList.remove("active"));
+
+      // 2. Add 'active' to the clicked link
+      link.classList.add("active");
+
+      // 3. Get the category text
+      const category = link.textContent.trim().toLowerCase();
+
+      // 4. Call your game fetch function with the selected category
+      fetchGames(category);
     });
   });
 }

@@ -1,115 +1,66 @@
-// const url = 'https://free-to-play-games-database.p.rapidapi.com/api/games?category=shooter';
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'x-rapidapi-key': '959a605f60msh4639c2a29781422p12f2c0jsn8dfa35698361',
-// 		'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
-// 	}
-// };
-
-// async function fetchGames() {
-// 	try {
-// 		const response = await fetch(url, options);
-// 		const result = await response.json();
-
-// 		console.log(result);
-// 	} catch (error) {
-// 		console.error(error);
-// 	}
-// }
-
-// fetchGames();
-/*
-  ! insert this code in the row class for each game in the api response
-  *             <div class="col">
-              <div data-id="582" class="card h-100 bg-transparent" role="button"
-              "="">
-              <div class="card-body">
-                <figure class="position-relative">
-                  <img
-                    class="card-img-top object-fit-cover h-100"
-                    src="https://www.freetogame.com/g/582/thumbnail.jpg"
-                  />
-                </figure>
-
-                <figcaption>
-                  <div class="hstack justify-content-between">
-                    <h3 class="h6 small text-white">Tarisland</h3>
-                    <span class="badge text-bg-primary p-2">Free</span>
-                  </div>
-
-                  <p class="card-text small text-center opacity-50 text-white">
-                    A,cross-platform,MMORPG,developed,by,Level,Infinite,and
-                  </p>
-                </figcaption>
-              </div>
-
-              <footer class="card-footer small hstack justify-content-between">
-                <span class="badge badge-color">MMORPG</span>
-                <span class="badge badge-color">PC (Windows)</span>
-              </footer>
-            </div>
-          *</div>
-*/
+// File: JS/index.js
+import { UIGames } from './ui.module.js';
+// import { fetchGames } from './games.module.js'; لو عامل API logic هناك
+// import { UIGameDetails } from './deatails.module.js'; لو محتاج تفاصيل
 
 document.addEventListener('DOMContentLoaded', () => {
-   const url = 'https://free-to-play-games-database.p.rapidapi.com/api/games?category=shooter';
-   const options = {
-       method: 'GET',
-       headers: {
-           'x-rapidapi-key': '959a605f60msh4639c2a29781422p12f2c0jsn8dfa35698361',
-           'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
-       }
-   };
+  const url = 'https://free-to-play-games-database.p.rapidapi.com/api/games?category=shooter';
+  const options = {
+    method: 'GET',
+    headers: {
+      'x-rapidapi-key': '959a605f60msh4639c2a29781422p12f2c0jsn8dfa35698361',
+      'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
+    }
+  };
 
-   // Make sure there is a container with class 'row' in your HTML
-   const rowContainer = document.querySelector('.row');
+  const rowContainer = document.querySelector('.row');
 
-   function createGameCard(game) {
-       return `
-           <div class="col">
-               <div data-id="${game.id}" class="card h-100 bg-transparent" role="button">
-                   <div class="card-body">
-                       <figure class="position-relative">
-                           <img
-                               class="card-img-top object-fit-cover h-100"
-                               src="${game.thumbnail}"
-                               alt="${game.title} Thumbnail"
-                           />
-                       </figure>
-                       <figcaption>
-                           <div class="hstack justify-content-between">
-                               <h3 class="h6 small text-white">${game.title}</h3>
-                               <span class="badge text-bg-primary p-2">Free</span>
-                           </div>
-                           <p class="card-text small text-center opacity-50 text-white">
-                               ${game.short_description}
-                           </p>
-                       </figcaption>
-                   </div>
-                   <footer class="card-footer small hstack justify-content-between">
-                       <span class="badge badge-color">${game.genre}</span>
-                       <span class="badge badge-color">${game.platform}</span>
-                   </footer>
-               </div>
-           </div>
-       `;
-   }
+  // Add event listeners to all cards after they are rendered
+  function addCardEventListeners() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', (event) => {
+        const gameId = event.currentTarget.getAttribute('data-id');
+        console.log(`Game ID: ${gameId}`);
+        // Disable scrolling on the body
+        document.body.style.overflow = 'hidden';
+            document.querySelector('.current-game').style.display = 'block';
 
-   async function fetchGames() {
-       try {
-           const response = await fetch(url, options);
-           const result = await response.json();
+        // هنا ممكن تضيف منطق لعرض تفاصيل اللعبة
+      });
+    });
+  }
 
-           if (rowContainer) {
-               rowContainer.innerHTML = result.map(createGameCard).join('');
-           } else {
-               console.error('No container with class "row" found in the HTML.');
-           }
-       } catch (error) {
-           console.error(error);
-       }
-   }
+  async function fetchGames() {
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
 
-   fetchGames();
+      if (rowContainer) {
+        const uiGames = new UIGames(result);
+        rowContainer.innerHTML = uiGames.createGameCard().join('');
+        addCardEventListeners(); // Add this line
+      } else {
+        console.error('Container `.row` not found.');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  fetchGames();
 });
+
+
+
+function closeDetails(){
+    document.querySelector('.current-game').style.display='none';
+    document.body.style.overflow = 'auto';
+    console.log("sdf");
+    
+}
+
+const closeicon = document.querySelector(".fa-xmark");
+if (closeicon) {
+  closeicon.addEventListener("click", closeDetails);
+}

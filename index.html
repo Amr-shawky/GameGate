@@ -16,7 +16,9 @@
     <header>
       <img src="./Assets/imgs/wraper.png" class="w-100" alt="game photo" />
     </header>
-    <nav class="sticky-top navbar navbar-expand-lg navbar-dark col-9 m-auto">
+    <nav
+      class="sticky-top navbar navbar-expand-lg navbar-dark col-9 m-auto z-0"
+    >
       <div class="container bg-nav rounded-4 py-2 box-shadow-dark">
         <a
           class="navbar-brand d-flex align-items-center fs-3"
@@ -70,13 +72,65 @@
     <main>
       <section class="home position-relative">
         <div class="container">
-          <div class="row row-cols-4">
-
+          <div class="row row-cols-4"></div>
         </div>
       </section>
+      <div
+        class="current-game position-absolute top-0 z-3 bg-details vh-100 w-100 p-4"
+      >
+        <div class="container ">
+          <h3 class="text-white pb-3">Details Game</h3>
+          <i
+            class="fas fa-xmark position-absolute fs-2 top-0 end-0 m-5 text-white"
+            aria-label="Close"
+            role="button"
+            tabindex="0"
+            onclick="close()"
+          ></i>
+          <div class="row">
+            <div class="col-4">
+              <img
+                src="./Assets/imgs/game.png"
+                class="w-100"
+                alt="game photo"
+              />
+            </div>
+            <div class="col-8">
+              <div class="gametype">
+                <h2 class="text-white">
+                    <span>Title:</span> Game Title</h2>
+                <p class="text-white pt-0">
+                  <span class="fw-bold">Category:</span> <badge class="bg-primary2 px-2 rounded-2 text-black">Shooter</badge>
+                </p>
+                <p class="text-white">
+                  <span class="fw-bold">Platform:</span> <badge class="bg-primary2 px-2 rounded-2 text-black">Web Browser</badge>
+                </p>
+                <p class="text-white">
+                  <span class="fw-bold">Status:</span> <badge class="bg-primary2 px-2 rounded-2 text-black">Live</badge>
+                </p>
+              </div>
+              <div class="gamedescription">
+                <p class="text-white">
+                    Dark Orbit Reloaded is a browser based 3d space-combat MMO with a massive playerbase and endless customization. originally launched in 2006, Dark Orbit was recently revamped with 3d graphics, new interface and new maps. Bigpoint games give players the freedom to explore the vast cosmos and engage in fierce PvP combat across the stars. Players in DarkOrbit will start by choosing a company to work for – the Earth Industries Corporation, the Mars Mining Operations, or the Venus Resources Unlimited – and carry out their work throughout the galaxy. Each corporation has their own unique view, base of operations, and the players within each are as varied as the stars. In DarkOrbit, players from rival factions won’t be your only threat. Aliens prowl among the planets and you must fight them in order to thrive and survive for your sake and the company whose banner you operate under. Though DarkOrbit only features ten different models of spaceship, the options to customize them are only as limited as you want them to be. Fight to obtain wealth and upgrade your vessel in order to decimate other players in pitched PvP game modes. Choose your faction and ready your spaceship’s thrusters and weapons in DarkOrbit. The galaxy is waiting for you to conquer it, but only the most cunning and well-equipped will succeed.
+                </p>
+              </div>
+              <button class="btn btn-warning bg-transparent">
+                <a
+                  href="https://www.darkorbit.com/"
+                  target="_blank"
+                  class="text-decoration-none text-white"
+                >
+                  Show Game
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-
+    <!-- how i declare a module  -->
     <script src="./JS/bootstrap.bundle.min.js"></script>
-    <script src="./JS/index.js"></script>
+    <!-- 👇 أهم حاجة: تخلي السكربت الرئيسي type="module" -->
+    <script type="module" src="./JS/index.js"></script>
   </body>
 </html>

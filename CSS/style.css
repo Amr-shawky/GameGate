@@ -46,19 +46,26 @@
 * {
     --font-primary: "nerkoOne-Regular";
     --font-secondary: "Comfortaa-VariableFont_wght";
+    --bg-primary2: RGB(13, 202, 240);
     --navbar-bg: #3A497B;
     --bs-navbar-active-color: RGB(17, 17, 17);
     --bs-navbar-active-color-hover: RGB(17, 17, 17);
+    --bg-details: #27282B;
     --bs-nav-link-color: white;
     --bs-nav-link-hover-color : #0099CC;
     --bs-navbar-active-color : #0099CC;
+    --bs-btn-close-color : white;
     font-family: var(--font-primary);
 }
-
+.bg-details {
+    background-color: var(--bg-details);
+}
 body {
     background-color: #272B30;
 }
-
+.bg-primary2{
+    background-color: var(--bg-primary2);
+}
 .mt-160 {
     margin-top: 160px;
 }
@@ -91,4 +98,11 @@ header img {
 .home .card:hover {
     transform: scale(1.05);
     filter: grayscale(0);
+}
+
+.btn-close {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    opacity: 1;
+    filter: none;
 }

@@ -114,3 +114,13 @@ header img {
 .gamedescription p{
     line-height: 1.2;
 }
+
+.game-detailed-info::-webkit-scrollbar {
+  display: none;
+}
+
+/* optional: still allow scroll behavior even when scrollbar hidden */
+.game-detailed-info {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

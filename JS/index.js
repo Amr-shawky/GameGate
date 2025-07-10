@@ -36,11 +36,19 @@ function addCardEventListeners() {
       console.log(gamejsoninfo);
     // Disable scrolling on the body
     // and make the scroll on the game details div only 
+    // i want to make the scroll invisible in the game details div but still allow scrolling by keyboard
+    // and mouse wheel
     document.body.style.overflow = "hidden";
     const gameDetailedInfo = document.querySelector(".game-detailed-info");
     if (gameDetailedInfo) {
-        gameDetailedInfo.style.overflowY = "auto";
-        gameDetailedInfo.style.maxHeight = "100vh";
+        gameDetailedInfo.style.overflowY = "scroll";
+        gameDetailedInfo.style.maxHeight = "95vh";
+        gameDetailedInfo.style.scrollbarWidth = "none"; // For Firefox
+        gameDetailedInfo.style.msOverflowStyle = "none"; // For IE and Edge
+        // For Chrome, Safari and Opera
+        gameDetailedInfo.style.setProperty("overflow", "scroll");
+        gameDetailedInfo.style.setProperty("scrollbar-width", "none");
+     
     }
       const currentgame = document.querySelector(".current-game");
       currentgame.style.display = "block";

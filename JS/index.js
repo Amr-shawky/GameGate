@@ -56,8 +56,8 @@ function addCardEventListeners() {
       currentgame.classList.remove("d-none");
 
       // هنا ممكن تضيف منطق لعرض تفاصيل اللعبة
-      const uiGameDetails = new UIGameDetails(gamejsoninfo);
-      gameDetailedInfo.innerHTML = uiGameDetails.createGameDetailsCard();
+      const uiGameDetails = new UIGameDetails(gamejsoninfo , gameDetailedInfo);
+      uiGameDetails.createGameDetailsCard();
       const closeicon = document.querySelector(".fa-xmark");
       if (closeicon) {
         closeicon.addEventListener("click", closeDetails);
@@ -90,8 +90,8 @@ async function fetchGames(type) {
     const result = await response.json();
 
     if (rowContainer) {
-      const uiGames = new UIGames(result);
-      rowContainer.innerHTML = uiGames.createGameCard().join("");
+      const uiGames = new UIGames(result , rowContainer);
+      uiGames.createGameCard();
       addCardEventListeners(); // Add this line
     } else {
       console.error("Container `.row` not found.");

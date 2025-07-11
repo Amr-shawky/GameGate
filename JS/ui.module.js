@@ -57,13 +57,6 @@ export class UIGameDetails {
     this.selector.innerHTML = `
                    <div class="game row">
                 <h3 class="text-white pb-3">Details Game</h3>
-                <i
-                  class="fas fa-xmark position-absolute fs-2 top-0 end-0 m-5 text-white"
-                  aria-label="Close"
-                  role="button"
-                  tabindex="0"
-                  onclick="close()"
-                ></i>
                 <div class="row">
                   <div class="col-12 col-md-4">
                     <img

@@ -72,18 +72,28 @@
     <main>
       <section class="home position-relative pt-5">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3"></div>
+          <div
+            class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3"
+          ></div>
         </div>
       </section>
+
       <div
-        class="d-none current-game position-fixed top-0 z-3 bg-details vh-100 w-100 pt-4 px-4">
-        <div class="container game-detailed-info">
-        </div>
+        class="d-none current-game position-fixed top-0 z-3 bg-details vh-100 w-100 pt-4 px-4"
+      >
+        <i
+          class="fas fa-xmark m-5 position-absolute fs-2 top-0 text-white"
+          aria-label="Close"
+          role="button"
+          tabindex="0"
+          onclick="close()"
+        ></i>
+        <div class="container game-detailed-info"></div>
       </div>
     </main>
     <div class="loading d-none">
-         <span class="loader"></span>
-      </div>
+      <span class="loader"></span>
+    </div>
     <!-- how i declare a module  -->
     <script src="./JS/bootstrap.bundle.min.js"></script>
     <!-- 👇 أهم حاجة: تخلي السكربت الرئيسي type="module" -->
